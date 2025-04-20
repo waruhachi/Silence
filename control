@@ -1,0 +1,9 @@
+Name: Silence
+Version: 1.0
+Description: Lower the volume to zero while on a call
+Maintainer: waruhachi
+Author: waruhachi
+Section: Tweaks
+Architecture: iphoneos-arm
+Depends: mobilesubstrate
+Package: moe.waru.silence
