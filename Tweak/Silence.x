@@ -15,3 +15,29 @@
 }
 
 %end
+
+%hook SBVolumeControl
+
+- (void)decreaseVolume {
+    %orig;
+
+    lastActionWasDecrease = YES;
+}
+
+- (void)increaseVolume {
+    %orig;
+
+    lastActionWasDecrease = NO;
+}
+
+- (void)_updateEffectiveVolume:(float)arg0 {
+    %orig;
+
+    if (previousVolume >= 0 && fabsf(previousVolume - arg0) < 0.001f && lastActionWasDecrease) {
+        [self toggleMute];
+    }
+
+    previousVolume = arg0;
+}
+
+%end
